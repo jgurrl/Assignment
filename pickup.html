@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pickup</title>
+    <script src="order.js"></script>
+</head>
+<style>
+    .grid-container {
+        display: inline-grid;
+        grid-template-columns: auto auto auto;
+        background-color: #2196F3;
+        padding: 10px;
+    }
+
+    .grid-item {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        padding: 10px;
+        font-size: 15px;
+        text-align: center;
+    }
+</style>
+<body>
+<script type="text/javascript">
+    window.onload = function load() {
+        var order;
+       // order = JSON.parse(localStorage.getItem("location")); un-comment for functionality of order.HTML location ---->>> pickup.HTML location
+        // demonstration purposes only (working with location in order.HTML)
+        order = " 292 Harelmar Road Southbrook: Order #1" // delete this line for full functionality
+        document.getElementById("out").innerHTML = order;
+
+        document.getElementById("Receipt").innerHTML = " ";
+
+        receipt = JSON.parse(localStorage.getItem("input"));
+        var y = 0;
+        for (y=0; y < receipt.length; y++) {
+            document.getElementById("Receipt").innerHTML += receipt[y];
+        }
+        var item_total;
+        var place;
+        item_total = JSON.parse(localStorage.getItem("total"));
+        var del;
+
+        del = JSON.parse(localStorage.getItem("del"));
+        document.getElementById("total").innerHTML = item_total+ "<br>";
+        if (del === 1) { // see comment #2 on submit() in order.js
+            place = JSON.parse(localStorage.getItem("order_location"));
+            document.getElementById("total").innerHTML = item_total+ "<br>" + "Delivery Location: " + place;
+            document.getElementById("credentials").innerHTML = "email: " + JSON.parse(localStorage.getItem("email")) + "<br>" + "name: " + JSON.parse(localStorage.getItem("surname")) + JSON.parse(localStorage.getItem("f_name")) + "<br>" + "Mobile: " + JSON.parse(localStorage.getItem("number"));
+        } else {
+            document.getElementById("credentials").innerHTML = "email: " + JSON.parse(localStorage.getItem("email")) + "<br>" + "name: " + JSON.parse(localStorage.getItem("surname")) + JSON.parse(localStorage.getItem("f_name"));
+
+        }
+    }
+</script>
+
+
+
+<center>
+    <div class="grid-container">
+        <div class="grid-item">
+
+<h1>Pending Orders</h1>
+<p id="out"></p>
+<h1> Order 1</h1>
+<p id="Receipt"></p>
+<p id="total"></p>
+<p id="credentials"></p>
+
+<! an example URL. />
+    <h2>Get Directions</h2>
+<form action="http://maps.google.com/maps" method="get" target="_blank"><input name="saddr" type="text"><br>
+
+    <input name="daddr" type="hidden" value="281 Sandgate Rd, #7, Boondall, QLD 4034"><br>  <! I FOUND PIZZA PLAZA!!!! />
+    <input type="submit" value="Get Directions"></form>
+        </div>
+    </div>
+</center>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>receipt</title>
+    <script src="order.js"></script>
+
+</head>
+<style>
+    .grid-container {
+        display: inline-grid;
+        grid-template-columns: auto auto auto;
+        background-color: #2196F3;
+        padding: 10px;
+    }
+
+    .grid-item {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        padding: 10px;
+        font-size: 15px;
+        text-align: center;
+</style>
+<body>
+<script type="text/javascript">
+    window.onload = function onload () {
+            document.getElementById("Receipt").innerHTML = " ";
+
+        receipt = JSON.parse(localStorage.getItem("input"));
+        var y = 0;
+        for (y=0; y < receipt.length; y++) {
+            document.getElementById("Receipt").innerHTML += receipt[y];
+        }
+        var item_total;
+        var place;
+        item_total = JSON.parse(localStorage.getItem("total"));
+        var del;
+
+        del = JSON.parse(localStorage.getItem("del"));
+        document.getElementById("total").innerHTML = item_total+ "<br>";
+        if (del === 1) { // see comment #2 on submit() in order.js
+            place = JSON.parse(localStorage.getItem("order_location"));
+            document.getElementById("total").innerHTML = item_total+ "<br>" + "Delivery Location: " + place;
+            document.getElementById("credentials").innerHTML = "email: " + JSON.parse(localStorage.getItem("email")) + "<br>" + "name: " + JSON.parse(localStorage.getItem("surname")) + JSON.parse(localStorage.getItem("f_name")) + "<br>" + "Mobile: " + JSON.parse(localStorage.getItem("number"));
+        } else {
+            document.getElementById("credentials").innerHTML = "email: " + JSON.parse(localStorage.getItem("email")) + "<br>" + "name: " + JSON.parse(localStorage.getItem("surname")) + JSON.parse(localStorage.getItem("f_name"));
+
+        }
+    }
+</script><br><br><br><br>
+<center>
+<div class="grid-container">
+    <div class="grid-item">
+
+    <h1> Order 1</h1> <br>
+<p id="Receipt"></p>
+<p id="total"></p>
+<p id="credentials"></p>
+    </div>
+</div>
+</center>
+</body>
+</html>

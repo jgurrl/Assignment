@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<div lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Order</title>
+    <style>
+   
+          .grid-container {
+            display: inline-grid;
+            grid-template-columns: auto auto auto;
+            background-color: #2196F3;
+            padding: 10px;
+        }
+
+        .grid-item {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            font-size: 15px;
+            text-align: center;
+        }
+        ..header {
+            overflow: hidden;
+            background-color: #f1f1f1;
+            padding: 20px 10px;
+        }
+
+        .header a {
+            float: left;
+            color: black;
+            text-align: center;
+            padding: 12px;
+            text-decoration: none;
+            font-size: 18px;
+            line-height: 25px;
+            border-radius: 4px;
+        }
+
+        .header a.logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .header a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        /* Style the active/current link*/
+        .header a.active {
+            background-color: dodgerblue;
+            color: white;
+        }
+
+        .header-right {
+            float: right;
+        }
+
+        @media screen and (max-width: 500px) {
+            .header a {
+                float: none;
+                display: block;
+                text-align: left;
+            }
+            .header-right {
+                float: none;
+            }
+        }
+    </style>
+</head>
+<script src="order.js"></script>
+<script type="text/javascript">
+    window.onload = function uncheck() {
+        document.getElementById("del").checked = false; // checked by default
+        document.getElementById("student").checked = false; //  checked by default
+        document.getElementById("location").innerHTML = " "
+    }
+</script>
+
+    <div class="header">
+        <a href="#default" class="logo">Pizza Palace</a>
+        <div class="header-right">
+            <a class="active" href="index.html">Home</a>
+            <a href="login.html">Login</a>
+            <a href="#about">About</a>
+        </div>
+    </div> <br>
+    <center> <br><br>
+        Delivery (+$5) <input id="del" value="1" type="checkbox" onclick="delivery()"> <br>
+        <p id="possible_delivery"></p>
+        I am a student/senior <input id="student" value="1" type="checkbox"> <br><br>
+    <br>
+    <div class="grid-container">
+        <div class="grid-item">
+           <b> Hawaiian: </b><br>
+            <img width="200" height="100" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.zmpEP4oFLFdhdTr9hyhVXgHaE8%26pid%3DApi&f=1"> <br> <select id ="hawi">
+            <option value=1 >Small ($8.95)</option>
+            <option value=2 >Medium ($12.95)</option>
+            <option value=3 >Large ($14.95)</option>
+
+
+        </select> <button onclick="cart(x=pizza.hawaiian, y = 'hawaiian', z = 'hawi')">Add To Cart </button>  <div class="custom-select" style="width:200px;">
+
+        </div></div>
+        <div class="grid-item">
+            <b> MeatLovers: </b><br>
+            <img width="200" height="100" src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F4.bp.blogspot.com%2F-CpLhlfE5hIY%2FUOTw8n9oHkI%2FAAAAAAAACQM%2FMfbtkiLVZwU%2Fs1600%2FMeat%2BLover%252527s%2BPizza%2B2c.jpg&f=1&nofb=1"> <br>
+            <select id ="meatlovers">
+            <option value=1 >Small ($10.95)</option>
+            <option value=2 >Medium ($13.95)</option>
+            <option value=3 >Large (15.95)</option>
+
+
+        </select><button onclick="cart(x=pizza.meatlovers, y ='meatlovers', z='meatlovers')">Add To Cart </button> <div class="custom-select" style="width:200px;">
+
+        </div></div>
+        <div class="grid-item">
+            <b> Vegetarian: </b><br>
+            <img width="200" height="100" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.H26m8-6Zc3v1lRehVi2jCgHaE8%26pid%3DApi&f=1"> <br>
+            <select id ="veg">
+            <option value=1 >Small ($9.95)</option>
+            <option value=2 >Medium ($11.95)</option>
+            <option value=3 >Large ($13.95)</option>
+
+
+        </select><button onclick="cart(x=pizza.vegetarian , y = 'vegetarian', z='veg')">Add To Cart </button> <div class="custom-select" style="width:200px;">
+
+        </div></div>
+        <div class="grid-item">
+            <b> Supreme: </b><br>
+            <img width="200" height="100" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.6bhxTFBUKFxw-D2bKwUrGwHaFj%26pid%3DApi&f=1"> <br><select id ="sup">
+            <option value=1 >Small ($11.95)</option>
+            <option value=2 >Medium ($15.95)</option>
+            <option value=3 >Large ($17.95)</option>
+
+
+        </select><button onclick="cart(x=pizza.supreme, y = 'supreme', z='sup')">Add To Cart </button><div class="custom-select" style="width:200px;">
+
+        </div></div>
+        <div class="grid-item">
+            <b> Mario Special: </b><br>
+            <img width="200" height="100" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.0Knj30lJPDIgmHKxSXpkVwHaNK%26pid%3DApi&f=1"> <br>
+            <select id ="mario_spex">
+            <option value=1 >Small ($12.95)</option>
+            <option value=2 >Medium ($16.95)</option>
+            <option value=3 >Large ($19.95)</option>
+
+
+        </select><button onclick="cart(x=pizza.mario_spex, y = 'mario special', z='mario_spex')">Add To Cart </button><div class="custom-select" style="width:200px;">
+        </div></div>
+        <div class="grid-item">
+            <b> Garlic Bread: </b><br>
+            <img width="200" height="100" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FSe2WeG7lNI0%2Fmaxresdefault.jpg&f=1&nofb=1"> <br>
+            <select id ="bread">
+            <option value=1 >Small ($3.50)</option>
+            <option value=2 >Large ($5.00)</option>
+
+        </select><button onclick="cart(x=pizza.garlic, y = 'garlic bread', z='bread')">Garlic Bread</button><div class="custom-select" style="width:200px;">
+
+        </div></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"><p id="show"> <button onclick="showdrinks()">Show Drinks</button></p> <p id="drinks"><div class="custom-select" style="width:200px;">
+            <select id ="drink">
+                <option value=1 >1.25 L</option>
+                <option value=2 >2 L</option>
+
+            </select>
+        </div></p> </p></div>
+        <div class="grid-item"></div>
+    </div>
+
+    <div class="grid-container">
+<span><div  style="float: top" style="float: right" class="grid-item"  >
+            <p> Cart Items</p>
+            <p id="out" style="float: left"></p> <br> <br> <br> <br> <br> <br> <br>
+            <p id="pout"></p> <br>
+    <button onclick="removeitem()">Remove Latest Item</button> <br>
+    <button onclick="submit()">Submit Order</button>
+
+        </div>
+        </span>
+    </div>
+    </center>
+
+
+ <br><center>
+ </center>
+</body>
+</html>
